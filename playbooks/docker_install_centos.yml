@@ -1,0 +1,49 @@
+---
+ - hosts: all
+   tasks:
+      - name: EPEL Repo install
+        yum:
+          name: epel-release
+          state: present
+          update_cache: yes
+
+      - name: install yum-utils
+        yum:
+          name: yum-utils
+          state: latest
+
+      - name: install device-mapper-persistent-data
+        yum:
+          name: device-mapper-persistent-data 
+          state: latest
+ 
+      #- name: add Docker repo
+       # yum_repository: 
+        #  name: docker-ce
+         # description: Docker Repo
+         # baseurl: https://download.docker.com/linux/centos/$
+          #state: present
+          #enabled: yes
+
+      - name: Add Docker Repo
+        get_url: 
+          url: https://download.docker.com/linux/centos/docker-ce.repo
+          dest: /etc/yum.repos.d/docker-ce.repo
+          mode: 0644
+ 
+      - name: install Docker-CE
+        yum: 
+          name: docker-ce
+          state: present
+          update_cache: yes 
+
+      - name: Docker Start 
+        service:
+          name: docker
+          state: start
+
+      - name: Docker Enable
+        service: 
+          name: docker
+          enabled: yes 
+

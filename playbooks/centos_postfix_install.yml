@@ -1,0 +1,14 @@
+---
+ - hosts: all
+   tasks: 
+      - name: Install Postfix Services
+        yum:
+          name: postfix
+          state: latest
+     
+      - name: Enable and Start Postfix Services
+        service:
+          name: postfix
+          enabled: yes
+          state: started
+
