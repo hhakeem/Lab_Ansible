@@ -8,10 +8,12 @@
      
       - name: Enable the br_netfilter module for cluster communication
         modprobe: 
-          name: bridge-nf-call-iptables
+          name: modprobe br_netfilter
           state: present
-          params: "1"
-     
+      
+      - name: Verifying parameter is 1 in bridge-nf-call-iptables file
+        command: echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+   
       - name: Add Docker Repo
         yum_repository:
           name: Docker
