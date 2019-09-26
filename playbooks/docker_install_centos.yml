@@ -40,7 +40,7 @@
       - name: Docker Start 
         service:
           name: docker
-          state: start
+          state: started
 
       - name: Docker Enable
         service: 
