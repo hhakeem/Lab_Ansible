@@ -8,7 +8,7 @@
      
       - name: Enable the br_netfilter module for cluster communication
         modprobe: 
-          name: modprobe br_netfilter
+          name: br_netfilter
           state: present
       
       - name: Verifying parameter is 1 in bridge-nf-call-iptables file
