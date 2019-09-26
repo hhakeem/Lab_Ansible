@@ -13,12 +13,12 @@
       
       - name: Verifying parameter is 1 in bridge-nf-call-iptables file
         command: echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
-   
+
       - name: Add Docker Repo
-        yum_repository:
-          name: Docker
-          description: Docker CE Repository
-          baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+        get_url: 
+          url: https://download.docker.com/linux/centos/docker-ce.repo
+          dest: /etc/yum.repos.d/docker-ce.repo
+          mode: 0644
      
       - name: Kubernetes repo 
         yum_repository:
