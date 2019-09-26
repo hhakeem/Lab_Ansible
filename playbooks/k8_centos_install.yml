@@ -56,7 +56,7 @@
       - name: Install Kubernetes
         yum:
           state: present
-          name: {{ packages }}
+          name: "{{ packages }}"
         vars:
           packages:
           - kubelet
