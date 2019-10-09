@@ -1,0 +1,9 @@
+---
+datacenter: HHDEN_LAB
+cluster: HHDEN_Cluster
+resource_pool: ansible_resource1
+datastore: QNAP_NFS
+vcenter_hostname: 192.168.1.202
+vcenter_username: ansible@hhden.lan
+vcenter_password: "@ns!ble123"
+esxi_hostname: 192.168.1.201

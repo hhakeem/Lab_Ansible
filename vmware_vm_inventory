@@ -1,0 +1,7 @@
+plugin: vmware_vm_inventory
+strict: False
+hostname: 192.168.1.202
+username: hhakeem@hhden.lan
+password: Tajw33d1!
+validate_certs: False
+with_tags: True
