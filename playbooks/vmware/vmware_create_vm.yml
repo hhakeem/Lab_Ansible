@@ -5,7 +5,25 @@
      - name: "vm_name"
        prompt: "Enter the name of the virtual machine"
        private: no
+      
+     - name: "size_gb"
+       prompt: "VM Disk size in GB"
+       private: no
+   
+     - name: "disk_type"
+       prompt: "VM Disk type (thin or thick)"
+       private: no
 
+     - name: "memory_size_mb"
+       prompt: "Amount of Memory in MB"
+       private: no
+
+     - name: "number_cpu"
+       prompt: "No. of CPUs"
+       private: no
+
+
+ 
   tasks:
     - name: include vars
       include_vars:
@@ -27,13 +45,13 @@
         esxi_hostname: "{{ esxi_hostname }}"
        # esxi_hostname: 192.168.1.201
         disk:
-        - size_gb: 20
-          type: thin
+        - size_gb: "{{ size_gb }}"
+          type: "{{ disk_type }}"
           datastore: "{{ datastore }}"
          #datastore: hitachi-datastore
         hardware:
-          memory_mb: 512
-          num_cpus: 4
+          memory_mb: "{{ memory_size_mb }}"
+          num_cpus: "{{ number_cpu }}"
           scsi: paravirtual
         networks:
         - name: VM Network
