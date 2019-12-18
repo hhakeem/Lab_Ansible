@@ -1,24 +1,24 @@
 [web]
-centos-http
+#centos-http
 
 [db]
-centos-db
+#centos-db
 
 [nfs]
-centos-nfs
+#centos-nfs
 
 [smb]
-centos-smb
+#centos-smb
 
 
 [smtp]
-centos-smtp
+#centos-smtp
 
 [dns]
-centos-dns
+#centos-dns
 
 [media]
-plex
+#plex
 
 [kubernetes]
 kubeadmin
@@ -28,5 +28,4 @@ kubenode2
 [Linux]
 hh-centos7-01
 hh-centos7-02
-
 

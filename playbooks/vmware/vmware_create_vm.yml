@@ -1,6 +1,8 @@
 - hosts: localhost
   connection: local
-
+  roles:   
+    - cohesity.cohesity_ansible_role
+ 
   vars_prompt:
      - name: "vm_name"
        prompt: "Enter the name of the virtual machine"
@@ -40,7 +42,7 @@
         #name: test_vm_0001
         name: "{{ vm_name }}"
         state: poweredon
-        guest_id: centos64Guest
+        guest_id: centos7_64Guest
         # This is hostname of particular ESXi server on which user wants VM to be deployed
         esxi_hostname: "{{ esxi_hostname }}"
        # esxi_hostname: 192.168.1.201
