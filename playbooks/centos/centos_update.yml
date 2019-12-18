@@ -1,0 +1,6 @@
+---
+ - hosts: all
+   tasks: 
+      - name: system updates
+        yum: name=* state=latest update_cache=yes
+

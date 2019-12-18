@@ -1,0 +1,9 @@
+[defaults]
+
+#hostfile  = /opt/ansible/hosts
+#roles_path = /opt/ansible/roles
+inventory = /opt/ansible
+
+[inventory]
+#enable_plugins = vmware_vm_inventory
+

@@ -1,0 +1,47 @@
+ # => Cohesity Agent Management
+# =>
+# => Role: cohesity.cohesity_ansible_role
+# =>
+
+# => Install the Cohesity Agent on each linux host
+# =>
+---
+- hosts: linux
+  # => Please change these variables to connect
+  # => to your Cohesity Cluster
+  vars:
+      var_cohesity_server: 192.168.1.225
+      var_cohesity_admin: admin
+      var_cohesity_password: admin
+      var_validate_certs: False
+  # => We need to gather facts to determine the OS type of
+  # => the machine
+  gather_facts: yes
+  become: true
+  roles:
+      - cohesity.cohesity_ansible_role
+  tasks:
+    - name: Uninstall Cohesity Agent from each Linux Server
+      include_role:
+          name: cohesity.cohesity_ansible_role
+          tasks_from: agent
+      vars:
+          cohesity_server: "{{ var_cohesity_server }}"
+          cohesity_admin: "{{ var_cohesity_admin }}"
+          cohesity_password: "{{ var_cohesity_password }}"
+          cohesity_validate_certs: "{{ var_validate_certs }}"
+          cohesity_agent:
+              state: absent
+
+    - name: Install new Cohesity Agent on each Linux Server
+      include_role:
+          name: cohesity.cohesity_ansible_role
+          tasks_from: agent
+      vars:
+          cohesity_server: "{{ var_cohesity_server }}"
+          cohesity_admin: "{{ var_cohesity_admin }}"
+          cohesity_password: "{{ var_cohesity_password }}"
+          cohesity_validate_certs: "{{ var_validate_certs }}"
+          cohesity_agent:
+              state: present
+

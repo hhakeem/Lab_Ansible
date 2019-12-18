@@ -1,0 +1,18 @@
+---
+ - hosts: all
+   tasks: 
+      - name: EPEL Repo install
+        yum: 
+          name: epel-release 
+          state: present 
+          update_cache: yes
+
+      - name: install emacs
+        yum: 
+          name: emacs
+          state: latest
+
+      - name: install java
+        yum: 
+          name: java
+          state: latest

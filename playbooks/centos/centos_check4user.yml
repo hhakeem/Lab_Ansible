@@ -1,0 +1,13 @@
+---
+ - hosts: all
+   vars_prompt:
+     - name: "user"
+       prompt: "Enter the user name:"
+   
+
+   tasks:
+     - name: Check for the existance of user
+       shell: grep -i {{ user }} /etc/passwd
+       register: result
+       changed_when: result.rc == 0
+       ignore_errors: True
